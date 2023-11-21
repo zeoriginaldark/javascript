@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Map, Filter</title>
+    </head>
+    <body>
+        <h3>Enter numbers between 1 and 25 only</h3><br><br>
+        <form id="form">
+            <label for="num1">Starting number:  </label>
+            <input type="number" id="num1" name="num1"><br><br>
+            <label for="num2">Ending number:  </label>
+            <input type="number" id="num2" name="num2"><br><br>
+            <button type="button" onclick="myFunction()">Submit</button>
+        </form>
+
+        <p id="funk"></p>
+        <p id="evenfunk"></p>
+        <p id="oddfunk"></p>
+        
+        <script>
+            function myFunction(){
+                let numb1 = parseInt(document.getElementById("num1").value);
+                let numb2 = parseInt(document.getElementById("num2").value);
+                var numb = [numb2,numb1];
+
+                if ((numb1<1 || numb2<1 || numb1>25 || numb2>25)) {
+                        document.getElementById("funk").innerHTML = "Error! Number range incorrect!"
+                        document.getElementById("evenfunk").innerHTML = "";
+                        document.getElementById("oddfunk").innerHTML = ""; 
+                } else{
+                    diff = numb[0] - numb[1];
+                    start = numb[1]
+                    while(diff!=1){
+                        start++;
+                        numb.push(start);
+                        diff--;    
+                    }
+
+                    numb.sort(function(a,b){return a-b});
+                    document.getElementById("funk").innerHTML = "These are the numbers ranging from "+numb1+" to "
+                    +numb2+":<br>"+numb;
+
+                    evennumb = numb.filter(evenfunc);
+                    oddnumb = numb.filter(oddfunc);
+
+                    function evenfunc(value){
+                        return (value+1)%2;
+                    }
+                    function oddfunc(value){
+                        return value%2;
+                    }
+
+                    document.getElementById("evenfunk").innerHTML = "These are even numbers in that range:<br>"+evennumb;
+                    document.getElementById("oddfunk").innerHTML = "These are odd numbers in that range:<br>"+oddnumb;
+                }
+            }
+        </script>
+
+    </body>
+</html>
