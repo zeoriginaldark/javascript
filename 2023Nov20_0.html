@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Objects in Array</title>
+    </head>
+    <body>
+        <p id="objarr"></p>
+
+        <script>
+            const myfruits = [{
+                    "title": "orange",
+                    "desc": "this is an orange",
+                    "img": "https://i.pinimg.com/564x/7a/aa/a5/7aaaa545e00e8a434850e80b8910dd94.jpg"
+                },
+                {
+                    "title": "cherries",
+                    "desc": "these are cherries",
+                    "img": "https://i.pinimg.com/564x/29/52/1b/29521bb74d8d04d7eff3e0a438529ec1.jpg"
+                },
+                {
+                    "title": "avocado",
+                    "desc": "this is an avocado",
+                    "img": "https://i.pinimg.com/564x/2e/a5/98/2ea598f82ff085e3190604c5838a049d.jpg"
+                },
+                {
+                    "title": "blueberries",
+                    "desc": "these are blueberries",
+                    "img": "https://i.pinimg.com/564x/01/21/8b/01218b1a1560ca260596cd19c14fb1d9.jpg"
+                },
+                {
+                    "title": "kiwi",
+                    "desc": "this is a kiwi",
+                    "img": "https://i.pinimg.com/564x/09/11/a3/0911a3fed699817f8b326d451dd10224.jpg"
+                }];
+
+            const objarrDiv = document.getElementById("objarr");
+
+            myfruits.forEach(fruit => {
+                const fruitDiv = document.createElement('div');
+
+                const imgDetails = document.createElement('img');
+                imgDetails.src = fruit.img;
+                imgDetails.alt = fruit.title;
+                imgDetails.style.width = '100px';
+                
+                const textDetails = document.createElement('p');
+                textDetails.innerHTML = 'title: '+fruit.title+'<br>desc: '+fruit.desc+'<br><br>';
+
+                fruitDiv.appendChild(imgDetails);
+                fruitDiv.appendChild(textDetails);
+
+                objarrDiv.appendChild(fruitDiv);
+            });
+        </script>
+    </body>
+</html>
